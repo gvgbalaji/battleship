@@ -20,8 +20,8 @@ from pygame.locals import *
 # globals
 FPS = 30 #Determines the number of frames per second
 REVEALSPEED = 8 #Determines the speed at which the squares reveals after being clicked
-WINDOWWIDTH = 800 #Width of game window
-WINDOWHEIGHT = 600 #Height of game window
+WINDOWWIDTH = 880 #Width of game window
+WINDOWHEIGHT = 660 #Height of game window
 TILESIZE = 40 #Size of the squares in each grid(tile)
 MARKERSIZE = 40 #Size of the box which contatins the number that indicates how many ships in this row/col
 BUTTONHEIGHT = 20 #Height of a standard button
@@ -515,12 +515,11 @@ def draw_board(board, revealed, marked):
     for x in range(0, (BOARDWIDTH + 1) * TILESIZE, TILESIZE):
         pygame.draw.line(DISPLAYSURF, GRIDLINECOLOR, (x + XMARGIN + MARKERSIZE,
             YMARGIN + MARKERSIZE), (x + XMARGIN + MARKERSIZE,
-            WINDOWHEIGHT - YMARGIN))
+            YMARGIN + MARKERSIZE + BOARDHEIGHT * TILESIZE))
     #draws the horizontal lines
     for y in range(0, (BOARDHEIGHT + 1) * TILESIZE, TILESIZE):
         pygame.draw.line(DISPLAYSURF, GRIDLINECOLOR, (XMARGIN + MARKERSIZE, y +
-            YMARGIN + MARKERSIZE), (WINDOWWIDTH - (DISPLAYWIDTH + MARKERSIZE *
-            2), y + YMARGIN + MARKERSIZE))
+            YMARGIN + MARKERSIZE), (XMARGIN + MARKERSIZE + BOARDWIDTH * TILESIZE, y + YMARGIN + MARKERSIZE))
 
 
 def set_markers(board):
